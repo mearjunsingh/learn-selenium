@@ -30,6 +30,7 @@ class Booking(webdriver.Chrome):
         )
         selected_currency.click()
     
+
     def select_place_to_go(self, place):
         search_field = self.find_element_by_id('ss')
         search_field.clear()
@@ -39,3 +40,15 @@ class Booking(webdriver.Chrome):
             'li[data-i="0"]'
         )
         first_result.click()
+
+    
+    def select_dates(self, check_in_date, check_out_date):
+        check_in_element = self.find_element_by_css_selector(
+            f'td[data-date="{check_in_date}"]'
+        )
+        check_in_element.click()
+
+        check_out_element = self.find_element_by_css_selector(
+            f'td[data-date="{check_out_date}"]'
+        )
+        check_out_element.click()
