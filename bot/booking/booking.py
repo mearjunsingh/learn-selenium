@@ -52,3 +52,43 @@ class Booking(webdriver.Chrome):
             f'td[data-date="{check_out_date}"]'
         )
         check_out_element.click()
+    
+
+    def persons_and_room(self, person, room):
+        selection_element = self.find_element_by_id('xp__guests__toggle')
+        selection_element.click()
+
+        while True:
+            decrease_adults_element = self.find_element_by_css_selector('button[aria-label="Decrease number of Adults"]')
+            decrease_adults_element.click()
+
+            adults_value_element = self.find_element_by_id('group_adults')
+            adults_value = adults_value_element.get_attribute('value') 
+            if int(adults_value) == 1:
+                break
+
+        increase_adult_button_element = self.find_element_by_css_selector('button[aria-label="Increase number of Adults"]')
+
+        for _ in range(person - 1):
+                increase_adult_button_element.click()
+        
+        while True:
+            decrease_rooms_element = self.find_element_by_css_selector('button[aria-label="Decrease number of Rooms"]')
+            decrease_rooms_element.click()
+
+            rooms_value_element = self.find_element_by_id('no_rooms')
+            rooms_value = rooms_value_element.get_attribute('value') 
+            if int(rooms_value) == 1:
+                break
+
+        increase_room_button_element = self.find_element_by_css_selector('button[aria-label="Increase number of Rooms"]')
+
+        for _ in range(room - 1):
+                increase_room_button_element.click()
+
+
+    def click_search(self):
+        search_button = self.find_element_by_css_selector(
+            'button[type="submit"]'
+        )
+        search_button.click()
