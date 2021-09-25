@@ -9,3 +9,5 @@ with Booking() as bot:
     bot.persons_and_room(person=5, room=3)
     bot.click_search()
     bot.apply_filteration()
+    bot.refresh()
+    bot.report_results()
