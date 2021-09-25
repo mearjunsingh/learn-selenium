@@ -1,5 +1,6 @@
 from selenium import webdriver
-from . import config
+from booking import config
+from booking.booking_filteration import BookingFilteration
 
 
 class Booking(webdriver.Chrome):
@@ -92,3 +93,8 @@ class Booking(webdriver.Chrome):
             'button[type="submit"]'
         )
         search_button.click()
+    
+
+    def apply_filteration(self):
+        filteration = BookingFilteration(driver=self)
+        filteration.apply_star_rating(3, 4, 5)
