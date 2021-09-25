@@ -6,7 +6,9 @@ from booking.booking_filteration import BookingFilteration
 class Booking(webdriver.Chrome):
     def __init__(self, driver_path=config.DRIVER_PATH, tear_down=False):
         self.tear_down = tear_down
-        super(Booking, self).__init__(executable_path=driver_path)
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
+        super(Booking, self).__init__(executable_path=driver_path, options=options)
         self.implicitly_wait(15)
         self.maximize_window()
     
