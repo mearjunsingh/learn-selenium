@@ -16,4 +16,5 @@ with PythonCompiler() as bot:
     bot.land_compiler()
     bot.input_code(source_code)
     bot.render_code()
-    # bot.fetch_output()
+    bot.refresh()
+    bot.fetch_output()

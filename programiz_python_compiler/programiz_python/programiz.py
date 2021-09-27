@@ -42,9 +42,9 @@ class PythonCompiler(webdriver.Chrome):
         run_btn.click()
 
 
-    # def fetch_output(self):
-    #     script = """
-    #     return ace.edit('terminal').getValue();
-    #     """
-    #     result = self.execute_script(script)
-    #     print(result)
+    def fetch_output(self):
+        script = """
+        return ace.edit('terminal').getValue();
+        """
+        result = self.execute_script(script)
+        print(result)
