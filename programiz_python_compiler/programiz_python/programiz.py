@@ -40,11 +40,3 @@ class PythonCompiler(webdriver.Chrome):
     def render_code(self):
         run_btn = self.find_element_by_xpath('//*[@id="root"]/div[3]/div[4]/div[1]/div[2]/button[3]')
         run_btn.click()
-
-
-    def fetch_output(self):
-        script = """
-        return ace.edit('terminal').getValue();
-        """
-        result = self.execute_script(script)
-        print(result)
